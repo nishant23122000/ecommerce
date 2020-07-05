@@ -82,7 +82,7 @@
 <%}%>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    var stripe = Stripe('pk_test_51GsV3qAotk5HiYIsTc07LRUR8RiwIOL06qhqGRhas4H9KfUzqmuTX4Nnj6LYzo7Fw1CHb79K4jOMhRwJNdJTJxTq00uKveZejA');
+    var stripe = Stripe('test key');
      var orderBtn=document.querySelector('.btn')
         orderBtn.addEventListener('click',function(){
             stripe.redirectToCheckout({
