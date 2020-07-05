@@ -13,4 +13,8 @@ this project contain 8 important folder
 3.public: this folder contain static file like css,images
 4.controller folder is about the main logic of backend
 
+this project is highly configure,here is payment with stripe ,also download file system like pds,.docx
+
+root of this proejct is app.js
+
 to start project i your pc please create mongodb cluster becasue this project based on mongodb databse 2.init npm 3.provide your email and password to send user signup or other messages
