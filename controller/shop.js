@@ -1,7 +1,7 @@
 const Product=require('../models/product')
 const User=require('../models/user')
 const Order=require('../models/order')
-const stripe=require('stripe')('sk_test_51GsV3qAotk5HiYIsa3jmvukdHjgpaXTbCYsYztMcx2oRMw7GyInzUuGs8Kvbj7ZUzpIL1QRHhXBFAEplOaZLTfSV00oPPXqVf7')
+const stripe=require('stripe')('your key')
 const PDFDocument=require('pdfkit')
 const fs=require('fs')
 const path=require('path')
