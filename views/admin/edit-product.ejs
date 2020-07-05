@@ -1,0 +1,50 @@
+
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/add-product.css">
+<%- include('../includes/nav.ejs') %>
+
+        <div class="container-contact100">
+          <div class="wrap-contact100">
+            <form action="/admin/<%if(edit){%>edit-product<%}else{%>product<%}%>" class="contact100-form validate-form" method="POST" enctype="multipart/form-data">
+              <span class="contact100-form-title">
+                <%if(edit){%>Edit Product<%}else{%>Add Product<%}%>
+              </span>
+      
+              <div class="wrap-input100 validate-input bg1">
+                <span class="label-input100">Product Name *</span>
+                <input required class="input100" type="text" name="title" value="<%if(edit){%><%=product.title%><%}%>" placeholder="Enter Product Name">
+              </div>
+      
+              <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+                <span class="label-input100">Image *</span>
+                <input  class="input100" type="file" name="image" placeholder="Enter Product ImageURL">
+              </div>
+      
+              <div class="wrap-input100 bg1 rs1-wrap-input100">
+                <span class="label-input100">Price</span>
+                <input required class="input100" type="number" name="price" value="<%if(edit){%><%=product.price%><%}%>" placeholder="Enter Product Price">
+              </div>
+      
+      
+              
+              <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Please Type Your Message">
+                <span class="label-input100">Description</span>
+                <textarea required class="input100" name="description" placeholder="product description"><%if(edit){%><%=product.description%><%}%></textarea>
+              </div>
+              <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+              <% if(edit) {%>
+                <input type="hidden" value="<%=product._id%>" name="productId">
+                <%}%>
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn">
+                  <span>
+                    <% if(edit) {%>Update-product<%}else {%>Add-Prodcut<%}%>
+                    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
+        <%- include('../includes/foot.ejs') %>

@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/order.css">
+</head>
+<body>
+<%- include('../includes/nav.ejs') %>
+
+    <%if(orders.length){%>
+        <%for(var order in orders){%>
+            <div class="card" >
+                <div class="card-body"></div>
+                    <h5 class="card-title">Order Id:<%=orders[order]['_id']%> <a href="/order/<%=orders[order]['_id']%>">invoice</a></h5>
+           
+                <%for(var item of orders[order]['product']){%>
+                        <div class='item'>
+                            <p class="detail">name : <%=item['productId']['title']%> ||| quantity : <%=item['quantity']%></p> 
+                            
+                            
+                        </div>
+                        
+                <%}%>
+                </div>
+            </div>
+        <%}%>
+    
+    <%}else{%>
+        <h1>not order yet</h1>
+    <%}%>
+<!--     
+    <div class="card" >
+        
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div> -->
+
+<%- include('../includes/foot.ejs') %>

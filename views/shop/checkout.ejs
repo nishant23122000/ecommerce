@@ -1,0 +1,93 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+<%- include('../includes/nav.ejs') %>
+
+
+
+<%if(products.length) { %>
+  <div class="wrap cf">
+ 
+    <div class="heading cf">
+     
+      
+    </div>
+    <div class="cart">
+
+      <ul class="cartWrap">
+
+        <% products.forEach(p=>{ %>
+           
+            
+     
+            
+                  <li class="items odd">
+                    
+                <div class="infoWrap"> 
+                    <div class="cartSection">
+                    <img src="/<%= p.productId.imageUrl %>" alt="<%= p.productId.imageUrl %>" class="itemImg" />
+                      
+                      <h3><%= p.productId.title %></h3>
+                    
+                       <p> <input type="text"  class="qty" placeholder="<%=p.quantity%>"/> x $<%=p.productId.price%></p>
+                    
+                      <p class="stockStatus"> In Stock</p>
+                    </div>  
+                
+                    
+                    <div class="prodTotal cartSection">
+                      <p>$<%=p.quantity*p.productId.price%></p>
+                    </div>
+
+                          <div class="cartSection removeWrap">
+
+
+                       
+                    </div>
+                  </div>
+                  </li>
+                 
+                  
+                       
+                  
+                  
+                  
+                
+             
+       <% }) %>
+         
+      </ul>
+    </div>
+    
+   
+    
+    <div class="subtotal cf">
+      <ul>
+
+        
+
+              <li class="totalRow final"><span class="label">Total</span><span class="value">$<%=totalPrice%>.00</span></li>
+        <li class="totalRow"><a href="/orders-add" style="background-color: #234e70; margin-right: 400px !important;" class="btn continue">ORDER</a></li>
+
+      </ul>
+    </div>
+  </div>
+   
+        
+      
+        
+<%}else{%>  
+  <h4 style="justify-content:center;text-align: center;margin: 50px auto;">Yout Cart is Empty!</h4>       
+<%}%>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('pk_test_51GsV3qAotk5HiYIsTc07LRUR8RiwIOL06qhqGRhas4H9KfUzqmuTX4Nnj6LYzo7Fw1CHb79K4jOMhRwJNdJTJxTq00uKveZejA');
+     var orderBtn=document.querySelector('.btn')
+        orderBtn.addEventListener('click',function(){
+            stripe.redirectToCheckout({
+                sessionId:'<%=sessionId%>'
+            })
+        })
+</script>
+<%- include('../includes/foot.ejs') %>

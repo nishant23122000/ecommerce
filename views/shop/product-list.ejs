@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+<%- include('../includes/nav.ejs') %>
+<br>
+
+<div  class='container'>
+
+        <% if(prods.length) {%>
+            <% for(let prod of prods) { %>
+
+                <div class='box'>
+                <div class="card" style="width: 18rem;">
+                    <h5 class="card-title"><%= prod.title %></h5>
+                    <img class="card-img-top" src="/<%= prod.imageUrl %>" alt="<%= prod.title %>">
+                    <div class="card-body">
+                      
+                      <h5 class='card-text'>$<%=prod.price%></h5>
+                      <p class="card-text des"><%=prod.description %></p>
+                      <div class='cen'>
+                      <a class='edit' href="/products/<%=prod._id %>">Details</a>
+                      <%if(isAuth){%>
+                      <%- include('../includes/add-to-cart.ejs',{product:prod})%>
+                      <%}%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  
+            <%} %>
+            <%- include('../includes/pagination.ejs',{currentPage:currentPage,nextPage:nextPage,previousPage:previousPage,hasNext:hasNext,hasPreviousPage:hasPreviousPage})%> 
+        <% }else {%>
+        <h1>no prodcuts availabel</h1>
+        <% }%>
+</div>      
+<%- include('../includes/foot.ejs') %>

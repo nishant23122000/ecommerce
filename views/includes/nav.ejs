@@ -1,0 +1,68 @@
+
+<style>
+  .navbar-brand{
+    color: white;
+    font-size: 25px;
+  }
+  .navbar-custom{
+    background-color: #234E70;
+  }
+  .nav-link{
+    color: white;
+    font-size: 19px;
+    
+  }
+ .nav-link:hover{
+    color:#fff !important;
+  }
+ 
+  li{
+    padding-left: 10px;
+  }
+  .nav-link.active{
+    color:yellow!important;
+    font-weight: 700;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">Quiz</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link <%= path === '/products' ? 'active' : ''%>" href="/">Shop</a>
+        </li>
+        <li class="nav-item ">
+            <a  class="nav-link <%= path === '/all-product' ? 'active' : ''%>" href="/products">Products </a>
+          </li>
+          <%if(isAuth){%>
+          <li class="nav-item ">
+            <a class="nav-link <%= path === '/cart' ? 'active' : ''%>" href="/cart">Cart <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link <%= path === '/orders' ? 'active' : ''%>" href="/orders">Orders <span class="sr-only">(current)</span></a>
+          </li>
+          
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/admin/add-product' ? 'active' : ''%>" href="/admin/add-product">add-products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <%= path === '/admin/products' ? 'active' : ''%>" href="/admin/products">admin-products</a>
+          </li>
+<%}%>
+          
+       
+   </ul>
+   <%if(!isAuth){%>
+    <a class=" nav-link my-2 my-lg-0 <%= path === '/login' ? 'active' : ''%>" href="/login">Login <span class="sr-only">(current)</span></a>
+    <a  class=" nav-link my-2 my-lg-0 <%= path === '/signup' ? 'active' : ''%>" href="/signup">Signup <span class="sr-only">(current)</span></a>
+   
+    <%}else{%>
+    <a style="margin-left: 10px;" class=" nav-link my-2 my-lg-0 <%= path === '/logout' ? 'active' : ''%>" href="/logout">Logout <span class="sr-only">(current)</span></a>
+  <%}%>
+    </div>
+  </nav>
+  

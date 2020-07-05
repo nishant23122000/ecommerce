@@ -1,0 +1,20 @@
+
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/add-product.css">
+</head>
+<body>
+<%- include('../includes/nav.ejs') %>
+<br>
+    <main style="text-align: center;">
+        <h1><%= product.title%></h1>
+        <hr>
+        <div>
+            <img style="width: 300px; height: 200px;" src="/<%= product.imageUrl%>" alt="<%=product.tile%>">
+        </div>
+        <h2>$<%=product.price %></h2>
+        <p style="font-size: 20px;" class='container'><%=product.description%></p>
+    <%if(isAuth){%>
+        <%- include('../includes/add-to-cart.ejs',{product:product})%>
+        <%}%>
+    </main>
+<%- include('../includes/foot.ejs') %>
